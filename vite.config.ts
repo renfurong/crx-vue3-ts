@@ -6,8 +6,13 @@ import manifest from './manifest.json' assert { type: 'json' } // Node >=17
 import path from 'path'
 import copy from 'rollup-plugin-copy' // 引入 rollup-plugin-copy,
 
+import AutoImport from 'unplugin-auto-import/vite'
+import { NaiveUiResolver } from 'unplugin-vue-components/resolvers'
+import Components from 'unplugin-vue-components/vite'
+
 const viteManifestHackIssue846: any = {
   // Workaround from https://github.com/crxjs/chrome-extension-tools/issues/846#issuecomment-1861880919.
+  // https://github.com/crxjs/chrome-extension-tools/issues/846
   name: 'manifestHackIssue846',
   renderCrxManifest(_manifest:any, bundle:any) {
       bundle['manifest.json'] = bundle['.vite/manifest.json']
@@ -29,6 +34,22 @@ export default defineConfig({
         { src: "src/icons/**", dest: 'dist/icons' } // 复制 src/icons/** 到 dist/icons 目录
       ]
     }),
+    AutoImport({
+      imports: [
+        'vue',
+        {
+          'naive-ui': [
+            'useDialog',
+            'useMessage',
+            'useNotification',
+            'useLoadingBar'
+          ]
+        }
+      ]
+    }),
+    Components({
+      resolvers: [NaiveUiResolver()]
+    })
   ],
   build: {
     outDir: path.resolve(__dirname, 'dist'),

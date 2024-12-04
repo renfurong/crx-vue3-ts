@@ -1,7 +1,10 @@
 
 
 <template>
+<div>
   <h1>hello</h1>
+  <n-button>naive-ui</n-button>
+</div>
 </template>
 <script setup lang="ts">
 
