@@ -31,7 +31,8 @@ export default defineConfig({
     copy({
       targets: [
         { src: 'manifest.json', dest: 'dist' }, // 复制 manifest.json 到 dist 目录 , 不需要压缩
-        { src: "src/icons/**", dest: 'dist/icons' } // 复制 src/icons/** 到 dist/icons 目录
+        { src: "src/icons/**", dest: 'dist/icons' }, // 复制 src/icons/** 到 dist/icons 目录
+        { src: 'src/css/**', dest: 'dist/css' }, // 复制 manifest.json 到 dist 目录 , 不需要压缩
       ]
     }),
     AutoImport({
@@ -57,7 +58,8 @@ export default defineConfig({
       input: {
         popup: path.resolve(__dirname, 'src/popup/index.html'),
         content: path.resolve(__dirname, 'src/content/content.ts'),
-        background: path.resolve(__dirname, 'src/background/service-worker.ts')
+        background: path.resolve(__dirname, 'src/background/service-worker.ts'),
+        css: path.resolve(__dirname, 'src/css/global.css')
       },
       output: {
         assetFileNames: 'assets/[name]-[hash].[ext]', // 静态资源

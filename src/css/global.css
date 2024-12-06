@@ -1,0 +1,17 @@
+.sync-btn {
+  height: 22px;
+  padding: 0px 12px;
+  background: pink;
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 8px;
+  cursor: pointer;
+}
+.ant-header-custom {
+  display: flex;
+  align-items: center;
+}
