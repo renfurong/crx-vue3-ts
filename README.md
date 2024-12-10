@@ -8,4 +8,6 @@ Learn more about the recommended Project Setup and IDE Support in the [Vue Docs 
 ### 初始化项目
 ```
 npm init vite@latest
-```
+
+yarn build 之后需要修改 dist 目录文件 manifest.json "use_dynamic_url": false 
+``` 
